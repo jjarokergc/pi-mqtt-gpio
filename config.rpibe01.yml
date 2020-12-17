@@ -174,11 +174,11 @@ logging:
   handlers:
     console:
       class: logging.StreamHandler
-      level: DEBUG
+      level: INFO
       formatter: simple
       stream: ext://sys.stdout
   loggers:
     mqtt_gpio:
-      level: DEBUG
+      level: INFO
       handlers: [console]
       propagate: yes
