@@ -14,7 +14,7 @@ PULLUPS = None
 
 class GPIO(GenericGPIO):
     """
-    Implementation of GPIO class for the PCF8574 IO expander chip.
+    Implementation of GPIO class for the MCP230XX IO expander chip.
     """
 
     def __init__(self, config):

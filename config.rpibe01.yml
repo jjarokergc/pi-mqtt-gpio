@@ -1,0 +1,184 @@
+mqtt:
+  host: localhost
+  port: 1883
+  user: ""
+  password: ""
+  topic_prefix: rpibe01
+  status_topic: status
+  status_payload_running: running
+  status_payload_stopped: stopped
+  status_payload_dead: dead
+  discovery: yes
+  discovery_prefix: "homeassistant"
+  discovery_name: "rpibe01"
+
+gpio_modules:
+  - name: IO_20
+    module: mcp23017
+    i2c_bus_num: 1
+    chip_addr: 0x20
+  - name: IO_22
+    module: mcp23017
+    i2c_bus_num: 1
+    chip_addr: 0x22
+
+digital_inputs:
+  - name: glassDining_Room
+    module: IO_20
+    pin: 0    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionDining_Room
+    module: IO_20
+    pin: 1    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassLiving_Room
+    module: IO_20
+    pin: 2    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionLiving_Room_Closet
+    module: IO_20
+    pin: 3    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionSide_Entry
+    module: IO_20
+    pin: 4    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassSide_Entry
+    module: IO_20
+    pin: 5    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionLiving_Room_Entry
+    module: IO_20
+    pin: 6    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassKitchen
+    module: IO_20
+    pin: 7    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionRec_Room_Window
+    module: IO_20
+    pin: 8    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassRec_Room_Window
+    module: IO_20
+    pin: 9    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motion2Nd_Fl_Hallway
+    module: IO_20
+    pin: 10    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionKitchen_Door
+    module: IO_20
+    pin: 11    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionRec_Room_Wall
+    module: IO_20
+    pin: 12    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassRec_Room_Wall
+    module: IO_20
+    pin: 13    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: motionVestibule
+    module: IO_20
+    pin: 14    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+  - name: glassVestibule
+    module: IO_20
+    pin: 15    
+    on_payload: "ON"
+    off_payload: "OFF"
+    pullup: yes
+    pulldown: no
+    bouncetime: 200
+
+digital_outputs:
+  - name: sirenHallwayWarble
+    module: IO_22
+    pin: 0
+    on_payload: "ON"
+    off_payload: "OFF"
+    initial: low
+  - name: sirenHallwaySteady
+    module: IO_22
+    pin: 1    
+    on_payload: "ON"
+    off_payload: "OFF"
+    initial: low
+
+logging:
+  version: 1
+  formatters:
+    simple:
+      format: "%(asctime)s %(name)s (%(levelname)s): %(message)s"
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+  loggers:
+    mqtt_gpio:
+      level: DEBUG
+      handlers: [console]
+      propagate: yes
