@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+schema:
+	python setup.py insert_schema
+
+>>>>>>> upstream/feature/MCP23017
 black:
 	black -l 90 mqtt_io
 
